@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI-CHAN | Personal Branding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Base and fonts */
+    body {
+      font-family: "Inter", sans-serif;
+      color: #e2e8f0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      background: #0f0f1a;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Anton", sans-serif;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Gradient text */
+    .text-gradient {
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Animated background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    }
+    
+    /* Card glow effect */
+    .card-glow {
+      background: rgba(30, 30, 60, 0.6);
+      border-radius: 16px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    
+    .card-glow:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+      border-color: rgba(236, 72, 153, 0.4);
+    }
+    
+    /* Neon button */
+    .btn-neon {
+      background: linear-gradient(45deg, #ec4899, #f43f5e);
+      color: white;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.75rem 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    }
+    
+    .btn-neon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.6);
+    }
+    
+    /* Section title */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      bottom: 0;
+      left: 20%;
+      border-radius: 2px;
+    }
+    
+    /* Navbar */
+    nav.scrolled {
+      background-color: rgba(15, 15, 26, 0.9) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Loading animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Pulse animation */
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+    .pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    /* Grid background pattern */
+    .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#ec4899, #f43f5e);
+      border-radius: 4px;
+    }
+    
+    /* Glow effect */
+    .glow {
+      text-shadow: 0 0 10px rgba(236, 72, 153, 0.7);
+    }
+    
+    /* Feature icon */
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(236, 72, 153, 0.1);
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #ec4899;
+    }
+    
+    /* Input focus */
+    .input-focus:focus {
+      border-color: #ec4899;
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.3);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Animated Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="fixed inset-0 bg-[#0f0f1a] flex flex-col items-center justify-center z-50 transition-opacity duration-500">
+    <div class="text-center">
+      <h1 class="text-6xl md:text-7xl font-bold text-gradient mb-6 floating">AI-CHAN</h1>
+      <div class="flex justify-center space-x-4 mb-8">
+        <div class="w-3 h-3 bg-pink-500 rounded-full pulse" style="animation-delay: 0s"></div>
+        <div class="w-3 h-3 bg-pink-500 rounded-full pulse" style="animation-delay: 0.2s"></div>
+        <div class="w-3 h-3 bg-pink-500 rounded-full pulse" style="animation-delay: 0.4s"></div>
+      </div>
+      <p class="text-gray-400 text-lg">Menginisialisasi sistem...</p>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-40 transition-all duration-300 py-4" id="navbar">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-3xl font-bold text-gradient">AI-CHAN</a>
+        
+        <div class="hidden md:flex space-x-8">
+          <a href="#about" class="text-gray-300 hover:text-pink-400 transition">Tentang</a>
+          <a href="#features" class="text-gray-300 hover:text-pink-400 transition">Fitur</a>
+          <a href="#pricing" class="text-gray-300 hover:text-pink-400 transition">Harga</a>
+          <a href="#premium" class="text-gray-300 hover:text-pink-400 transition">Premium</a>
+          <a href="#testimonials" class="text-gray-300 hover:text-pink-400 transition">Testimoni</a>
+          <a href="#contact" class="text-gray-300 hover:text-pink-400 transition">Kontak</a>
+        </div>
+        
+        <a href="https://wa.me/6285185530062" target="_blank" class="hidden md:block btn-neon">
+          <i class="fab fa-whatsapp"></i> Hubungi
+        </a>
+        
+        <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a2e] mt-4 rounded-lg p-4">
+      <div class="flex flex-col space-y-4">
+        <a href="#about" class="text-gray-300 hover:text-pink-400 transition">Tentang</a>
+        <a href="#features" class="text-gray-300 hover:text-pink-400 transition">Fitur</a>
+        <a href="#pricing" class="text-gray-300 hover:text-pink-400 transition">Harga</a>
+        <a href="#premium" class="text-gray-300 hover:text-pink-400 transition">Premium</a>
+        <a href="#testimonials" class="text-gray-300 hover:text-pink-400 transition">Testimoni</a>
+        <a href="#contact" class="text-gray-300 hover:text-pink-400 transition">Kontak</a>
+        <a href="https://wa.me/6285185530062" target="_blank" class="btn-neon text-center">
+          <i class="fab fa-whatsapp"></i> Hubungi
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient leading-tight">
+          AI-CHAN<br>Asisten WhatsApp<br>Masa Depan
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-lg">
+          Bot WhatsApp bertenaga AI yang ramah dan asisten pribadi Anda. Siap membantu 24/7 dengan teknologi canggih dan kepribadian yang menyenangkan.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#pricing" class="btn-neon">
+            <i class="fas fa-rocket"></i> Mulai Sekarang
+          </a>
+          <a href="#features" class="px-6 py-3 border border-pink-500 text-pink-400 rounded-full hover:bg-pink-500 hover:text-white transition">
+            <i class="fas fa-play-circle"></i> Pelajari Fitur
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        
+        <div class="relative card-glow p-2 rounded-2xl">
+          <img src="https://files.catbox.moe/dzs9q5.jpg" 
+               alt="AI-CHAN Character" 
+               class="rounded-xl w-full h-auto object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6 bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Tentang AI-CHAN</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Solusi chatbot WhatsApp canggih dengan teknologi AI terbaru untuk kebutuhan bisnis dan personal Anda.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="grid-pattern absolute inset-0 rounded-2xl"></div>
+          <div class="card-glow p-8 relative">
+            <h3 class="text-2xl font-bold mb-4 text-gradient">Mengapa Memilih AI-CHAN?</h3>
+            <p class="text-gray-300 mb-6">
+              AI-CHAN dirancang khusus untuk memberikan pengalaman chatbot yang alami dan menyenangkan di platform WhatsApp yang sudah familiar.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-300">Teknologi AI mutakhir dengan pemrosesan bahasa alami</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-300">Integrasi mudah dengan sistem Anda</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center">
+                    <i class="fas fa-check text-white text-xs"></i>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-300">Dukungan 24/7 dari tim profesional</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div>
+          <div class="card-glow p-8">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-center mb-4 text-gradient">Kecerdasan Buatan</h3>
+            <p class="text-gray-300 text-center">
+              AI-CHAN menggunakan model bahasa terbaru yang terus belajar dari interaksi untuk memberikan respon yang semakin akurat dan manusiawi.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4 mt-6">
+            <div class="card-glow p-6 text-center">
+              <div class="text-3xl text-pink-500 mb-2">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4 class="font-bold mb-1">Cepat</h4>
+              <p class="text-sm text-gray-400">Respon dalam hitungan detik</p>
+            </div>
+            <div class="card-glow p-6 text-center">
+              <div class="text-3xl text-pink-500 mb-2">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h4 class="font-bold mb-1">Aman</h4>
+              <p class="text-sm text-gray-400">Proteksi data pengguna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-6 bg-[#1a1a2e]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Fitur Unggulan</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Berbagai fitur canggih yang membuat AI-CHAN menjadi asisten WhatsApp terbaik untuk Anda.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Chat Cerdas</h3>
+          <p class="text-gray-300 text-center">
+            Percakapan alami layaknya manusia dengan kemampuan memahami konteks dan emosi.
+          </p>
+        </div>
+        
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Manajemen Jadwal</h3>
+          <p class="text-gray-300 text-center">
+            Atur janji temu, pengingat, dan agenda dengan perintah suara atau teks sederhana.
+          </p>
+        </div>
+        
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Otomatisasi Tugas</h3>
+          <p class="text-gray-300 text-center">
+            Otomatiskan tugas rutin seperti mengirim pesan, menyimpan kontak, dan lainnya.
+          </p>
+        </div>
+        
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Analisis Data</h3>
+          <p class="text-gray-300 text-center">
+            Lacak dan analisis interaksi untuk wawasan bisnis yang berharga.
+          </p>
+        </div>
+        
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-plug"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Integrasi API</h3>
+          <p class="text-gray-300 text-center">
+            Terhubung dengan sistem CRM, e-commerce, dan platform lainnya.
+          </p>
+        </div>
+        
+        <div class="card-glow p-8 hover:transform hover:scale-105 transition duration-300">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4 text-gradient">Multi Bahasa</h3>
+          <p class="text-gray-300 text-center">
+            Dukung berbagai bahasa untuk menjangkau audiens global.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-6 bg-gradient-to-b from-[#1a1a2e] to-[#0f0f1a]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Paket Harga</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Pilih paket yang sesuai dengan kebutuhan Anda. Semua paket termasuk dukungan penuh.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="card-glow p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-pink-500 text-white text-xs font-bold px-3 py-1 transform translate-x-2 translate-y-2 rotate-12">
+            POPULER
+          </div>
+          <h3 class="text-2xl font-bold mb-2 text-gradient">Starter</h3>
+          <p class="text-gray-400 mb-6">Cocok untuk pemula</p>
+          
+          <div class="mb-6">
+            <span class="text-4xl font-bold">Rp15.000</span>
+            <span class="text-gray-400">/bulan</span>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">1 Grup WhatsApp</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Durasi 1 Bulan</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Pesan Welcome/Left</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Respon Cepat</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/6285185530062?text=Saya%20tertarik%20dengan%20paket%20Starter" 
+             class="btn-neon w-full text-center">
+            Pilih Paket
+          </a>
+        </div>
+        
+        <div class="card-glow p-8">
+          <h3 class="text-2xl font-bold mb-2 text-gradient">Pro</h3>
+          <p class="text-gray-400 mb-6">Untuk kebutuhan bisnis</p>
+          
+          <div class="mb-6">
+            <span class="text-4xl font-bold">Rp30.000</span>
+            <span class="text-gray-400">/2 bulan + 15 hari</span>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">1 Grup WhatsApp</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Durasi 2 Bulan + 15 Hari</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Pesan Welcome/Left</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Respon Prioritas</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/6285185530062?text=Saya%20tertarik%20dengan%20paket%20Pro" 
+             class="btn-neon w-full text-center">
+            Pilih Paket
+          </a>
+        </div>
+        
+        <div class="card-glow p-8">
+          <h3 class="text-2xl font-bold mb-2 text-gradient">Enterprise</h3>
+          <p class="text-gray-400 mb-6">Solusi lengkap</p>
+          
+          <div class="mb-6">
+            <span class="text-4xl font-bold">Rp65.000</span>
+            <span class="text-gray-400">/2 bulan + 15 hari</span>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">2 Grup WhatsApp</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Durasi 2 Bulan + 15 Hari</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Pesan Kustom</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-pink-500 mr-2"></i>
+              <span class="text-gray-300">Dukungan 24/7</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/6285185530062?text=Saya%20tertarik%20dengan%20paket%20Enterprise" 
+             class="btn-neon w-full text-center">
+            Pilih Paket
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center text-gray-400">
+        <p>Perlu penyesuaian khusus? <a href="#contact" class="text-pink-400 hover:underline">Hubungi kami</a> untuk solusi kustom.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Section -->
+  <section id="premium" class="py-20 px-6 bg-[#0f0f1a]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Paket Premium</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Nikmati fitur eksklusif dan limit yang lebih besar dengan berlangganan premium.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div class="card-glow p-6 text-center">
+          <h3 class="text-xl font-bold mb-2 text-gradient">1 Hari</h3>
+          <div class="text-3xl font-bold mb-4">Rp1.000</div>
+          <a href="https://wa.me/6285185530062?text=Saya%20mau%20beli%20premium%201%20hari" 
+             class="px-4 py-2 bg-pink-500 hover:bg-pink-600 rounded-full text-sm font-medium transition">
+            Beli Sekarang
+          </a>
+        </div>
+        
+        <div class="card-glow p-6 text-center">
+          <h3 class="text-xl font-bold mb-2 text-gradient">7 Hari</h3>
+          <div class="text-3xl font-bold mb-4">Rp5.000</div>
+          <a href="https://wa.me/6285185530062?text=Saya%20mau%20beli%20premium%207%20hari" 
+             class="px-4 py-2 bg-pink-500 hover:bg-pink-600 rounded-full text-sm font-medium transition">
+            Beli Sekarang
+          </a>
+        </div>
+        
+        <div class="card-glow p-6 text-center">
+          <h3 class="text-xl font-bold mb-2 text-gradient">1 Bulan</h3>
+          <div class="text-3xl font-bold mb-4">Rp10.000</div>
+          <a href="https://wa.me/6285185530062?text=Saya%20mau%20beli%20premium%201%20bulan" 
+             class="px-4 py-2 bg-pink-500 hover:bg-pink-600 rounded-full text-sm font-medium transition">
+            Beli Sekarang
+          </a>
+        </div>
+        
+        <div class="card-glow p-6 text-center bg-gradient-to-br from-yellow-500 to-yellow-400 text-black">
+          <h3 class="text-xl font-bold mb-2">1 Tahun</h3>
+          <div class="text-3xl font-bold mb-4">Rp50.000</div>
+          <a href="https://wa.me/6285185530062?text=Saya%20mau%20beli%20premium%201%20tahun" 
+             class="px-4 py-2 bg-black hover:bg-gray-800 text-yellow-400 rounded-full text-sm font-medium transition">
+            Beli Sekarang
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="card-glow p-8">
+          <h3 class="text-xl font-bold mb-4 text-gradient">Keuntungan Premium</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Limit harian 1000+</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Bebas iklan</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Fitur eksklusif</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Prioritas respon</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-glow p-8">
+          <h3 class="text-xl font-bold mb-4 text-gradient">Metode Pembayaran</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center">
+              <i class="fab fa-cc-visa text-2xl text-blue-500 mr-2"></i>
+              <span class="text-gray-300">QRIS</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-wallet text-2xl text-green-500 mr-2"></i>
+              <span class="text-gray-300">DANA</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fab fa-shopify text-2xl text-orange-500 mr-2"></i>
+              <span class="text-gray-300">ShopeePay</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fab fa-cc-mastercard text-2xl text-red-500 mr-2"></i>
+              <span class="text-gray-300">OVO</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-glow p-8">
+          <h3 class="text-xl font-bold mb-4 text-gradient">Informasi</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-info-circle text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Harga sudah termasuk pajak</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-info-circle text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Bisa diperpanjang</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-info-circle text-pink-500 mt-1 mr-2"></i>
+              <span class="text-gray-300">Garansi aktif 100%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 px-6 bg-gradient-to-b from-[#0f0f1a] to-[#1a1a2e]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Testimoni Pengguna</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Apa kata mereka tentang AI-CHAN
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card-glow p-8">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                 alt="User testimonial" 
+                 class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Sarah Wijaya</h4>
+              <p class="text-sm text-gray-400">Pemilik Bisnis</p>
+            </div>
+          </div>
+          <p class="text-gray-300 italic">
+            "AI-CHAN membantu bisnis saya menghemat waktu dengan merespon pelanggan secara otomatis. Sangat direkomendasikan!"
+          </p>
+          <div class="mt-4 text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="card-glow p-8">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" 
+                 alt="User testimonial" 
+                 class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Budi Santoso</h4>
+              <p class="text-sm text-gray-400">Admin Komunitas</p>
+            </div>
+          </div>
+          <p class="text-gray-300 italic">
+            "Fitur welcome message sangat membantu untuk menyambut anggota baru di grup komunitas kami. Botnya selalu aktif 24 jam!"
+          </p>
+          <div class="mt-4 text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        
+        <div class="card-glow p-8">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                 alt="User testimonial" 
+                 class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Dewi Lestari</h4>
+              <p class="text-sm text-gray-400">Freelancer</p>
+            </div>
+          </div>
+          <p class="text-gray-300 italic">
+            "Saya menggunakan AI-CHAN untuk mengatur jadwal meeting dengan klien. Sangat praktis dan tidak pernah error."
+          </p>
+          <div class="mt-4 text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-[#1a1a2e]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Hubungi Kami</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Punya pertanyaan atau butuh bantuan? Tim kami siap membantu Anda.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="card-glow p-8">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Kirim Pesan</h3>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-gray-300 mb-2">Nama Lengkap</label>
+              <input type="text" id="name" 
+                     class="w-full px-4 py-3 bg-[#2a2a4a] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-300 input-focus">
+            </div>
+            
+            <div>
+              <label for="email" class="block text-gray-300 mb-2">Email</label>
+              <input type="email" id="email" 
+                     class="w-full px-4 py-3 bg-[#2a2a4a] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-300 input-focus">
+            </div>
+            
+            <div>
+              <label for="message" class="block text-gray-300 mb-2">Pesan Anda</label>
+              <textarea id="message" rows="5" 
+                        class="w-full px-4 py-3 bg-[#2a2a4a] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-300 input-focus"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-neon w-full">
+              <i class="fas fa-paper-plane"></i> Kirim Pesan
+            </button>
+          </form>
+        </div>
+        
+        <div>
+          <div class="card-glow p-8 mb-6">
+            <h3 class="text-2xl font-bold mb-6 text-gradient">Informasi Kontak</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="text-pink-500 text-xl mr-4 mt-1">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-300">Lokasi</h4>
+                  <p class="text-gray-400">Jakarta, Indonesia</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="text-pink-500 text-xl mr-4 mt-1">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-300">Email</h4>
+                  <p class="text-gray-400">support@ai-chan.id</p>
+                </div>
+              </div>
+              
+              
+              <div class="flex items-start">
+                <div class="text-pink-500 text-xl mr-4 mt-1">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-300">Jam Operasional</h4>
+                  <p class="text-gray-400">Senin - Minggu, 24 Jam</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-glow p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gradient">Media Sosial</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="w-12 h-12 rounded-full bg-[#2a2a4a] flex items-center justify-center text-xl hover:bg-pink-500 transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="w-12 h-12 rounded-full bg-[#2a2a4a] flex items-center justify-center text-xl hover:bg-pink-500 transition">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="w-12 h-12 rounded-full bg-[#2a2a4a] flex items-center justify-center text-xl hover:bg-pink-500 transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="w-12 h-12 rounded-full bg-[#2a2a4a] flex items-center justify-center text-xl hover:bg-pink-500 transition">
+                <i class="fab fa-telegram-plane"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 bg-[#0f0f1a]">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 section-title text-gradient">Pertanyaan Umum</h2>
+        <p class="text-xl text-gray-400">Temukan jawaban untuk pertanyaan yang sering diajukan</p>
+      </div>
+      
+      <div class="space-y-4">
+        <div class="card-glow p-6">
+          <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(1)">
+            <h3 class="text-lg font-semibold text-gray-300">Bagaimana cara menggunakan AI-CHAN?</h3>
+            <i class="fas fa-chevron-down text-pink-500 transition-transform duration-300" id="faq-icon-1"></i>
+          </button>
+          <div class="mt-4 text-gray-400 hidden" id="faq-content-1">
+            <p>Anda cukup menambahkan nomor AI-CHAN ke kontak WhatsApp Anda, lalu mulai mengirim pesan seperti biasa. AI-CHAN akan merespons secara otomatis.</p>
+          </div>
+        </div>
+        
+        <div class="card-glow p-6">
+          <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(2)">
+            <h3 class="text-lg font-semibold text-gray-300">Apa perbedaan paket regular dan premium?</h3>
+            <i class="fas fa-chevron-down text-pink-500 transition-transform duration-300" id="faq-icon-2"></i>
+          </button>
+          <div class="mt-4 text-gray-400 hidden" id="faq-content-2">
+            <p>Paket regular memiliki limit penggunaan harian yang lebih rendah, sedangkan paket premium memberikan akses tanpa batas dan fitur eksklusif seperti prioritas respon dan bebas iklan.</p>
+          </div>
+        </div>
+        
+        <div class="card-glow p-6">
+          <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(3)">
+            <h3 class="text-lg font-semibold text-gray-300">Apakah data saya aman dengan AI-CHAN?</h3>
+            <i class="fas fa-chevron-down text-pink-500 transition-transform duration-300" id="faq-icon-3"></i>
+          </button>
+          <div class="mt-4 text-gray-400 hidden" id="faq-content-3">
+            <p>Ya, kami menggunakan enkripsi end-to-end dan tidak menyimpan percakapan Anda setelah selesai diproses. Privasi pengguna adalah prioritas utama kami.</p>
+          </div>
+        </div>
+        
+        <div class="card-glow p-6">
+          <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(4)">
+            <h3 class="text-lg font-semibold text-gray-300">Bagaimana jika bot tidak merespons?</h3>
+            <i class="fas fa-chevron-down text-pink-500 transition-transform duration-300" id="faq-icon-4"></i>
+          </button>
+          <div class="mt-4 text-gray-400 hidden" id="faq-content-4">
+            <p>Jika bot tidak merespons, pastikan Anda telah mengaktifkan paket yang sesuai. Jika masalah berlanjut, hubungi tim dukungan kami melalui WhatsApp untuk bantuan segera.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 bg-gradient-to-r from-[#ec4899] to-[#f43f5e]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Siap Menggunakan AI-CHAN?</h2>
+      <p class="text-xl text-white mb-8">Mulai percakapan cerdas dengan bot WhatsApp terbaik sekarang juga.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/6285185530062" 
+           class="px-8 py-4 bg-white text-pink-600 font-bold rounded-full hover:bg-gray-100 transition">
+          <i class="fab fa-whatsapp mr-2"></i> Hubungi via WhatsApp
+        </a>
+        <a href="#pricing" 
+           class="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-pink-600 transition">
+          Lihat Paket Harga
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0a0a14] py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-gradient">AI-CHAN</h3>
+          <p class="text-gray-400">
+            Solusi chatbot WhatsApp berbasis AI untuk kebutuhan bisnis dan personal Anda.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Tautan Cepat</h3>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-gray-400 hover:text-pink-400 transition">Tentang</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-pink-400 transition">Fitur</a></li>
+            <li><a href="#pricing" class="text-gray-400 hover:text-pink-400 transition">Harga</a></li>
+            <li><a href="#premium" class="text-gray-400 hover:text-pink-400 transition">Premium</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Dukungan</h3>
+          <ul class="space-y-2">
+            <li><a href="#faq" class="text-gray-400 hover:text-pink-400 transition">FAQ</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-pink-400 transition">Kontak</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Kebijakan Privasi</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Tetap Terhubung</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="text-gray-400 hover:text-pink-400 transition text-xl">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 transition text-xl">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 transition text-xl">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 transition text-xl">
+              <i class="fab fa-telegram-plane"></i>
+            </a>
+          </div>
+          <p class="text-gray-400 text-sm">
+            Berlangganan newsletter untuk mendapatkan update terbaru.
+          </p>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+        <p>© 2024 AI-CHAN. All rights reserved. Developed by mas`rens</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" 
+          class="fixed bottom-8 right-8 w-12 h-12 bg-pink-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 invisible">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loading-screen').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('loading-screen').style.display = 'none';
+        }, 500);
+      }, 1500);
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        backToTop.classList.remove('opacity-100', 'visible');
+        backToTop.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    
+    // Back to top button
+    document.getElementById('back-to-top').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // FAQ toggle
+    function toggleFAQ(id) {
+      const content = document.getElementById('faq-content-' + id);
+      const icon = document.getElementById('faq-icon-' + id);
+      
+      content.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+    
+    // Particles.js configuration
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ec4899"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ec4899",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
